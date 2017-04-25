@@ -1,0 +1,89 @@
+[
+	{ "keys": ["ctrl+d"], "command": "duplicate_line" },
+	{
+        "keys": [
+            "alt+w"
+        ], 
+        "command": "wrap_as_you_type", 
+        "context": [
+            {
+                "operand": false, 
+                "operator": "equal", 
+                "match_all": true, 
+                "key": "setting.is_widget"
+            }, 
+            {
+                "match_all": true, 
+                "key": "emmet_action_enabled.wrap_as_you_type"
+            }
+        ]
+    }, 
+    { "keys": ["alt+q"], "command": "expand_abbreviation_by_tab",
+        "context": [
+            {
+                "operand": "source.css, source.sass, source.less, source.scss, source.stylus, source.jade, text.slim, text.xml, text.html - source, text.haml, text.scala.html, source string", 
+                "operator": "equal", 
+                "match_all": true, 
+                "key": "selector"
+            }, 
+            {
+                "operand": "storage.type.templatetag.django", 
+                "operator": "not_equal", 
+                "match_all": true, 
+                "key": "selector"
+            }, 
+            {
+                "match_all": true, 
+                "key": "selection_empty"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "match_all": true, 
+                "key": "has_next_field"
+            }, 
+            {
+                "operator": "equal", 
+                "operand": false, 
+                "match_all": true, 
+                "key": "setting.disable_tab_abbreviations"
+            }, 
+            {
+                "operand": false, 
+                "operator": "equal", 
+                "match_all": true, 
+                "key": "auto_complete_visible"
+            }, 
+            {
+                "match_all": true, 
+                "key": "is_abbreviation"
+            }
+        ]
+    },
+    { "keys": ["ctrl+t"], "command": "swap_line_up" },
+    { "keys": ["alt+a"], "command": "reindent", "context":
+        [
+            { "key": "setting.auto_indent", "operator": "equal", "operand": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_match", "operand": "^$", "match_all": true },
+            { "key": "following_text", "operator": "regex_match", "operand": "^$", "match_all": true }
+        ]
+    },
+    {
+        "keys": ["ctrl+shift+a"],
+        "command": "reindent",
+        "args": {
+            "single_line": false
+        }
+    },
+    { "keys": ["ctrl+shift+u"], "command": "swap_case" },
+    { "keys": ["tab"], "command": "expand_abbreviation_by_tab", "context":
+        [
+            { "operand": "source.js", "operator": "equal", "match_all": true, "key": "selector" },
+            { "match_all": true, "key": "selection_empty" },
+            { "operator": "equal", "operand": false, "match_all": true, "key": "has_next_field" },
+            { "operand": false, "operator": "equal", "match_all": true, "key": "auto_complete_visible" },
+            { "match_all": true, "key": "is_abbreviation" }
+        ]
+    }
+]
